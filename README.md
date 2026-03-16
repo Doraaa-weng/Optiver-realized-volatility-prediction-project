@@ -2,6 +2,14 @@
 
 Kaggle Code Competition pipeline: predict short-term realized volatility from order book and trade data.
 
+## Introduction
+
+This project develops an end-to-end machine learning pipeline for short-term volatility forecasting using high-frequency financial market data. The task is based on Kaggle's **Optiver Realized Volatility Prediction** competition, where the objective is to predict the realized volatility of stocks over the next 10-minute interval from the previous 10 minutes of order book and trade activity.
+
+The project focuses on transforming raw market microstructure data into predictive features, including weighted average prices, spreads, order imbalance, trade activity signals, realized-volatility proxies, and sub-window statistics. On top of these features, it applies grouped cross-validation by `time_id` and a multi-seed LightGBM ensemble to build a robust offline evaluation and modeling workflow.
+
+Beyond reproducing a competition baseline, this repository highlights practical machine learning engineering skills: feature design for structured time-series data, leakage-aware validation, experiment tracking, local holdout testing, and reproducible submission generation. It is intended as both a Kaggle project and a portfolio-ready example of building a complete predictive modeling pipeline from raw data to evaluated results.
+
 ## Project structure
 
 | File | Role |
@@ -173,3 +181,4 @@ Notes:
 - **Submission format**: Extra columns, wrong column order, or wrong filename; must be exactly `submission.csv` with `row_id,target`.
 - **Row order**: Predictions must align 1:1 with test.csv (same row_id order); we use test’s `row_id` column.
 - **Missing parquet**: On Kaggle, ensure book/trade parquet files are in the input dataset; locally, ensure paths in `utils.get_data_dir()` point to them.
+
