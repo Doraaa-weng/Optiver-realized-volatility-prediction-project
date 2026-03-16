@@ -131,6 +131,26 @@ run_inference(data_dir="local_holdout", model_dir="local_holdout/artifacts")
 
 - **RMSPE** (Root Mean Square Percentage Error). Validation in `train.py` uses grouped splits by `time_id`, reports fold RMSPE, and saves OOF/report artifacts.
 
+## Results
+
+Current local baseline performance:
+
+- Full training set grouped CV RMSPE: `0.8030`
+- Local holdout grouped CV RMSPE: `0.8086`
+- Local holdout test RMSPE: `0.8219`
+
+Local holdout split details:
+
+- Train rows: `343146`
+- Holdout rows: `85786`
+- Features used: `334`
+- Seeds used in ensemble: `42, 52, 62`
+
+Notes:
+
+- The local holdout score is the most useful offline estimate of model performance in this repository.
+- The public Kaggle `test.csv` in this competition is only a tiny placeholder, so the 3-row public `submission.csv` is mainly for format validation rather than meaningful leaderboard evaluation.
+
 ## Minimum viable baseline
 
 - Load book/trade, aggregate by `(stock_id, time_id)`.
