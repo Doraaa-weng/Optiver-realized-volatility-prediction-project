@@ -174,11 +174,3 @@ Notes:
 - **Trade activity**: volume, order count, trade intensity over time.
 - **Stock/time id**: stock_id or time_id as categorical (if many stocks).
 
-## Common mistakes
-
-- **Wrong metric**: Optimizing RMSE/MAE instead of RMSPE (validation should use RMSPE).
-- **Leakage**: Using the same `time_id` in train and val; use grouped/block splits by `time_id`.
-- **Submission format**: Extra columns, wrong column order, or wrong filename; must be exactly `submission.csv` with `row_id,target`.
-- **Row order**: Predictions must align 1:1 with test.csv (same row_id order); we use test’s `row_id` column.
-- **Missing parquet**: On Kaggle, ensure book/trade parquet files are in the input dataset; locally, ensure paths in `utils.get_data_dir()` point to them.
-
